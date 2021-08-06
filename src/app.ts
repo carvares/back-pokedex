@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/populate", async (req, res) => {
-  for (let i = 1; i < 800; i++) {
+  for (let i = 1; i < 894; i++) {
     const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
     const newPokemon = {
       name: result.data.name,
