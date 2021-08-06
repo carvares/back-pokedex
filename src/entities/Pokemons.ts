@@ -33,6 +33,6 @@ export default class Pokemon {
   description: string;
 
   @ManyToMany(() => User, (user) => user.pokemon)
-  @JoinTable({ name: "PokemonsUser" })
+  @JoinTable({ name: "pokemonsUsers" })
   user: User[];
 }

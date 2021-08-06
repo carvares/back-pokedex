@@ -2,7 +2,7 @@ import "./setup";
 import axios from "axios";
 import { getRepository } from "typeorm";
 import Pokemon from "./entities/Pokemons";
-import express from "express";
+import express,{Request, Response, NextFunction} from "express";
 import cors from "cors";
 import "reflect-metadata";
 
@@ -10,11 +10,16 @@ import connectDatabase from "./database";
 
 import * as userController from "./controllers/userConroller";
 import * as pokemonController from "./controllers/pokemonController";
+import { AuthMiddleware } from "./middlewares/middlewares";
 
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use((err: Error, req: Request, res:Response, next:NextFunction) =>{
+  console.log(err)
+  return res.sendStatus(500)
+})
 
 app.get("/populate", async (req, res) => {
   for (let i = 1; i < 894; i++) {
@@ -49,8 +54,9 @@ app.get("/populate", async (req, res) => {
 
 app.post("/sign-up", userController.newUser);
 app.post("/sign-in", userController.newSession);
-app.get("/pokemons", pokemonController.listPokemons);
-app.get("/users", userController.getUsers);
+app.get("/pokemons", AuthMiddleware, pokemonController.listPokemons);
+app.post("/my-pokemons/:id/add", AuthMiddleware,pokemonController.newPokemon)
+app.post("/my-pokemons/:id/remove", AuthMiddleware,pokemonController.deletePokemon)
 
 
 export async function init() {
