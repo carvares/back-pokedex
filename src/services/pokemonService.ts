@@ -15,7 +15,7 @@ export async function getPokemon(id: number) {
     for (let i = 0; i < userPokemon.pokemon.length; i++) {
       for (let j = 0; j < result.length; j++) {
         if(!result[j].inMyPokemons){
-          result[j].inMyPokemons === false
+          result[j].inMyPokemons = false
         }
         if (result[j].id === userPokemon.pokemon[i].id) {
 
@@ -23,7 +23,6 @@ export async function getPokemon(id: number) {
       }
     }
   }
-
 
   return result;
 
