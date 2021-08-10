@@ -11,8 +11,8 @@ export async function getPokemon(id: number) {
     const userPokemon = await getRepository(User).findOne(id, {
       relations: ["pokemon"],
     });
-
-    for (let i = 0; i < userPokemon.pokemon.length; i++) {
+    let userPokemons = userPokemon.pokemon.length > 0? userPokemon.pokemon.length: 1;
+    for (let i = 0; i < userPokemons; i++) {
       for (let j = 0; j < result.length; j++) {
         if(!result[j].inMyPokemons){
           result[j].inMyPokemons = false
