@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import Pokemon from "./Pokemons";
 import User from "./User";
-@Entity("pokemonsUser")
+@Entity("pokemonsUsers")
 export default class PokemonsUsers{
     @PrimaryGeneratedColumn()
     id: number;
