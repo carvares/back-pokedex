@@ -13,12 +13,12 @@ export async function listPokemons(req: Request, res: Response) {
 export async function newPokemon(req:Request, res:Response) {
   const user: Session =  res.locals.user;
   const pokemonId = parseInt(req.params.id)
-  const result =  await pokemonService.addPokemon(user.id, pokemonId)
+  const result =  await pokemonService.addPokemon(user.userId, pokemonId)
   res.sendStatus(200)
 }
 export async function deletePokemon(req:Request, res:Response) {
   const user: Session =  res.locals.user;
   const pokemonId = parseInt(req.params.id)
-  const result =  await pokemonService.removePokemon(user.id, pokemonId)
+  const result =  await pokemonService.removePokemon(user.userId, pokemonId)
   res.sendStatus(200)
 }
