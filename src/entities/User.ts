@@ -18,7 +18,5 @@ export default class User {
   @Column()
   password: string;
 
-  @ManyToMany(() => Pokemon, (pokemon) => pokemon.user)
-  @JoinTable({ name: "pokemonsUser" })
-  pokemon: Pokemon[];
+ 
 }

@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { userValidation } from "../schema/userSchema";
-
 import * as userService from "../services/userService";
 
 export async function getUsers(req: Request, res: Response) {

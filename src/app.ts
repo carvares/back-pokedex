@@ -5,9 +5,7 @@ import Pokemon from "./entities/Pokemons";
 import express,{Request, Response, NextFunction} from "express";
 import cors from "cors";
 import "reflect-metadata";
-
 import connectDatabase from "./database";
-
 import * as userController from "./controllers/userConroller";
 import * as pokemonController from "./controllers/pokemonController";
 import { AuthMiddleware } from "./middlewares/middlewares";
